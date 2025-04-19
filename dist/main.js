@@ -1,6 +1,8 @@
 import App from './App.js';
+
 const root = document.getElementById('root');
-root.innerHTML = `<h1>Hello Friends</h1>`;
+const app = App();
+root.appendChild(app);
 
 const socket = new WebSocket('ws://localhost:5173')
 
