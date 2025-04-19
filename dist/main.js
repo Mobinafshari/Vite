@@ -1,3 +1,4 @@
+import App from './App.js';
 const root = document.getElementById('root');
 root.innerHTML = `<h1>Hello Friends</h1>`;
 
