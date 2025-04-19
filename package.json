@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "acorn": "^8.14.1",
     "chokidar": "^4.0.3",
     "ws": "^8.18.1"
   }
