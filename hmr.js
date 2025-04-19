@@ -2,7 +2,8 @@ import http from "http";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { WebSocketServer } from 'ws'
+import { WebSocketServer } from 'ws';
+import chokidar from 'chokidar';
 
 // Required for __dirname in ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -49,6 +50,26 @@ wss.on('connection', (socket) => {
     type: 'connected',
     message: 'Hello from dev server WebSocket 👋',
   }))
+ 
+})
+
+const watcher = chokidar.watch(path.join(__dirname, 'dist'), {
+  ignored: /(^|[\/\\])\../, // ignore dotfiles
+  ignoreInitial: true,
+})
+
+watcher.on('change', (filePath) => {
+  console.log(`🌀 File changed: ${filePath}`)
+
+  // Notify all connected clients
+  wss.clients.forEach((client) => {    
+    if (client.readyState === 1) {
+      client.send(JSON.stringify({
+        type: 'reload',
+        file: filePath,
+      }))
+    }
+  })
 })
 
 server.listen(5173, () => {
