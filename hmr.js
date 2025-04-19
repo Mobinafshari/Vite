@@ -2,12 +2,18 @@ import http from "http";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { log } from "console";
+import { WebSocketServer } from 'ws'
 
 // Required for __dirname in ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const publicDir = path.join(__dirname, "dist");
+
+// Check if directory exists before starting server
+if (!fs.existsSync(publicDir)) {
+  console.error(`❌ Error: Directory "${publicDir}" does not exist`);
+  process.exit(1);
+}
 
 const server = http.createServer((req, res) => {
   let filePath = req.url === "/" ? "/index.html" : req.url;
@@ -33,6 +39,22 @@ const server = http.createServer((req, res) => {
   });
 });
 
+
+const wss = new WebSocketServer({ server })
+
+wss.on('connection', (socket) => {
+  console.log('🔌 WebSocket client connected')
+
+  socket.send(JSON.stringify({
+    type: 'connected',
+    message: 'Hello from dev server WebSocket 👋',
+  }))
+})
+
 server.listen(5173, () => {
-  console.log("✅ Dev server running at http://localhost:5173");
+  try {
+    console.log("✅ Dev server running at http://localhost:5173");
+  } catch (error) {
+    console.error("❌ Dev server failed to start", error);
+  }
 });
