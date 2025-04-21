@@ -27,7 +27,6 @@ function buildGraph(filePath, rootDir = process.cwd()) {
     moduleGraph.set(fullPath, { deps: [], dependents: [] })
     
     for (const importPath of imports) {
-        console.log(importPath);
         const resolvedPath = path.resolve(path.dirname(fullPath), importPath)
     moduleGraph.get(fullPath).deps.push(resolvedPath)
 
@@ -40,7 +39,6 @@ function buildGraph(filePath, rootDir = process.cwd()) {
   }
 }
 
-buildGraph('./dist/main.js')
-// console.log([...moduleGraph.entries()])
+
 
 export { buildGraph, moduleGraph }

@@ -12,7 +12,7 @@ export default function App() {
   const button = Button({
     text: 'Click Me!',
     onClick: () => {
-      alert('Button clicked!!');
+      alert('Button clicked');
     }
   });
   

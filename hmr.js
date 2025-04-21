@@ -2,8 +2,9 @@ import http from "http";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { WebSocketServer } from 'ws';
-import chokidar from 'chokidar';
+import { WebSocketServer } from "ws";
+import chokidar from "chokidar";
+import { buildGraph, moduleGraph } from "./createModuleGraph.js";
 
 // Required for __dirname in ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -40,37 +41,41 @@ const server = http.createServer((req, res) => {
   });
 });
 
+const wss = new WebSocketServer({ server });
 
-const wss = new WebSocketServer({ server })
+wss.on("connection", (socket) => {
+  console.log("🔌 WebSocket client connected");
 
-wss.on('connection', (socket) => {
-  console.log('🔌 WebSocket client connected')
+  socket.send(
+    JSON.stringify({
+      type: "connected",
+      message: "Hello from dev server WebSocket 👋",
+    })
+  );
+});
 
-  socket.send(JSON.stringify({
-    type: 'connected',
-    message: 'Hello from dev server WebSocket 👋',
-  }))
- 
-})
-
-const watcher = chokidar.watch(path.join(__dirname, 'dist'), {
+const watcher = chokidar.watch(path.join(__dirname, "dist"), {
   ignored: /(^|[\/\\])\../, // ignore dotfiles
   ignoreInitial: true,
-})
+});
 
-watcher.on('change', (filePath) => {
-  console.log(`🌀 File changed: ${filePath}`)
-
+watcher.on("change", (filePath) => {
+  console.log(`🌀 File changed: ${filePath}`);
+  buildGraph(filePath);
+  console.log([...moduleGraph.entries()]);
+  const graphModule = [...moduleGraph.entries()];
   // Notify all connected clients
-  wss.clients.forEach((client) => {    
+  wss.clients.forEach((client) => {
     if (client.readyState === 1) {
-      client.send(JSON.stringify({
-        type: 'reload',
-        file: filePath,
-      }))
+      client.send(
+        JSON.stringify({
+          type: "reload",
+          file: filePath,
+        })
+      );
     }
-  })
-})
+  });
+});
 
 server.listen(5173, () => {
   try {
