@@ -1,4 +1,4 @@
-export default function Button({ text = 'Click me', onClick }) {
+export default function Button({ text = 'Click me!!', onClick }) {
   const button = document.createElement('button');
   button.textContent = text;
   button.style.padding = '10px 20px';

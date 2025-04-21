@@ -5,6 +5,7 @@ import { fileURLToPath } from "url";
 import { WebSocketServer } from "ws";
 import chokidar from "chokidar";
 import { buildGraph, moduleGraph } from "./createModuleGraph.js";
+import { parse } from "url";
 
 // Required for __dirname in ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -18,8 +19,9 @@ if (!fs.existsSync(publicDir)) {
 }
 
 const server = http.createServer((req, res) => {
-  let filePath = req.url === "/" ? "/index.html" : req.url;
-  let fullPath = path.join(publicDir, filePath);
+  console.log(parse(req.url));
+   let filePath = req.url === "/" ? "/index.html" : parse(req.url).pathname;
+   let fullPath = path.join(__dirname, "dist", filePath);
 
   // Simple static file serving
   fs.readFile(fullPath, (err, data) => {
@@ -60,10 +62,9 @@ const watcher = chokidar.watch(path.join(__dirname, "dist"), {
 });
 
 watcher.on("change", (filePath) => {
-  console.log(`🌀 File changed: ${filePath}`);
-  buildGraph(filePath);
-  console.log([...moduleGraph.entries()]);
-  const graphModule = [...moduleGraph.entries()];
+  // buildGraph(filePath);
+  // console.log([...moduleGraph.entries()]);
+  // const graphModule = [...moduleGraph.entries()];
   // Notify all connected clients
   wss.clients.forEach((client) => {
     if (client.readyState === 1) {
