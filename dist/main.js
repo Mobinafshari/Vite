@@ -12,14 +12,11 @@ socket.addEventListener('message', async(event) => {
   if (data.type === 'reload') {
     console.log('[HMR] Reloading module...');
 
-    // Remove old app
     root.innerHTML = '';
 
-    // Import the updated App.js (with cache busting)
     const newModule = await import(`./App.js?t=${Date.now()}`);
-    const newApp = newModule.default ? newModule.default() : newModule.App(); // Handle default export
+    const newApp = newModule.default ? newModule.default() : newModule.App(); 
 
-    // Re-render
     root.appendChild(newApp);
   }
 })
