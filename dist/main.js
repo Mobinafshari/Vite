@@ -11,7 +11,6 @@ socket.addEventListener("message", async (event) => {
 
   if (data.type === "reload") {
     console.log("[HMR] Reloading module...");
-    console.log("==>>", data.file);
     root.innerHTML = "";
 
     const newModule = await import(`./App.js?t=${Date.now()}`);
