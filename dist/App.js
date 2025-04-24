@@ -6,11 +6,11 @@ export default function App() {
   app.style.padding = '20px';
   
   const title = document.createElement('h1');
-  title.textContent = 'My App!!';
+  title.textContent = 'My App!';
   title.style.color = '#333';
   
   const button = Button({
-    text: 'Click Me!',
+    text: 'Click',
     onClick: () => {
       alert('Button clicked');
     }

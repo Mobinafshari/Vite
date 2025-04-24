@@ -39,6 +39,7 @@ function buildGraph(filePath, rootDir = process.cwd()) {
   }
 }
 
-
+buildGraph('./dist/App.js')
+console.log([...moduleGraph.entries()])
 
 export { buildGraph, moduleGraph }

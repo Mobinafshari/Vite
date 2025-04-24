@@ -10,13 +10,14 @@ socket.addEventListener("message", async (event) => {
   const data = JSON.parse(event.data);
 
   if (data.type === "reload") {
-    console.log("[HMR] Reloading module...");
-    root.innerHTML = "";
+    console.log("[HMR] Reloading module...", data.file.split("dist\\"));
 
     const newModule = await import(`./App.js?t=${Date.now()}`);
-    console.log("new module", newModule.default());
+    const newButton = await import(`./Button.js?t=${Date.now()}`);
     const newApp = newModule.default ? newModule.default() : newModule.App();
 
+    root.innerHTML = "";
     root.appendChild(newApp);
+    root.appendChild(newButton.default());
   }
 });

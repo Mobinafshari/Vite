@@ -19,7 +19,6 @@ if (!fs.existsSync(publicDir)) {
 }
 
 const server = http.createServer((req, res) => {
-  console.log(parse(req.url));
    let filePath = req.url === "/" ? "/index.html" : parse(req.url).pathname;
    let fullPath = path.join(__dirname, "dist", filePath);
 
@@ -62,8 +61,8 @@ const watcher = chokidar.watch(path.join(__dirname, "dist"), {
 });
 
 watcher.on("change", (filePath) => {
-  // buildGraph(filePath);
-  // console.log([...moduleGraph.entries()]);
+  buildGraph(filePath);
+  console.log([...moduleGraph.entries()]);
   // const graphModule = [...moduleGraph.entries()];
   // Notify all connected clients
   wss.clients.forEach((client) => {
