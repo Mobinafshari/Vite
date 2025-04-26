@@ -19,8 +19,8 @@ if (!fs.existsSync(publicDir)) {
 }
 
 const server = http.createServer((req, res) => {
-   let filePath = req.url === "/" ? "/index.html" : parse(req.url).pathname;
-   let fullPath = path.join(__dirname, "dist", filePath);
+  let filePath = req.url === "/" ? "/index.html" : parse(req.url).pathname;
+  let fullPath = path.join(__dirname, "dist", filePath);
 
   // Simple static file serving
   fs.readFile(fullPath, (err, data) => {
@@ -61,16 +61,19 @@ const watcher = chokidar.watch(path.join(__dirname, "dist"), {
 });
 
 watcher.on("change", (filePath) => {
-  buildGraph(filePath);
-  console.log([...moduleGraph.entries()]);
-  // const graphModule = [...moduleGraph.entries()];
+  buildGraph("./dist/main.js");
+  const mustChanges = [...moduleGraph.entries()].find((entry) =>
+    entry[0].includes(filePath)
+  );
+  console.log(mustChanges);
+
   // Notify all connected clients
   wss.clients.forEach((client) => {
     if (client.readyState === 1) {
       client.send(
         JSON.stringify({
           type: "reload",
-          file: filePath,
+          file: mustChanges,
         })
       );
     }

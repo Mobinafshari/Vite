@@ -9,8 +9,8 @@ const socket = new WebSocket("ws://localhost:5173");
 socket.addEventListener("message", async (event) => {
   const data = JSON.parse(event.data);
 
-  if (data.type === "reload" && data.file.includes("App.js")) {
-    console.log("[HMR] Reloading module...");
+  if (data.type === "reload") {
+    console.log("[HMR] Reloading module...", data.file);
 
     const newModule = await import(`./App.js?t=${Date.now()}`);
     const newApp = newModule.default ? newModule.default() : newModule.App();
