@@ -1,6 +1,8 @@
 import Button from "./Button.js";
 
 export default function App() {
+  const socket = new WebSocket("ws://localhost:5173");
+
   const app = document.createElement("div");
   app.style.textAlign = "center";
   app.style.padding = "20px";
@@ -15,25 +17,27 @@ export default function App() {
       alert("Button clicked");
     },
   });
-  const socket = new WebSocket("ws://localhost:5173");
-
+  button.id = "my-button";
   socket.addEventListener("message", async (event) => {
     const data = JSON.parse(event.data);
     if (data.type === "reload") {
-      console.log("[HMR] Reloading module...", data.file.split("dist\\"));
+      const newModule = await import(`./Button.js?t=${Date.now()}`);
+      const newButton = newModule.default
+        ? newModule.default({
+            text: "Click",
+            onClick: () => {
+              alert("Button clicked");
+            },
+          })
+        : newModule.App();
 
-      const newButton = await import(`./Button.js?t=${Date.now()}`);
-      app.innerHTML = "";
-      app.appendChild(
-        newButton.default({
-          text: "Click",
-          onClick: () => {
-            alert("Button clicked");
-          },
-        })
-      );
+      const oldButton = document.getElementById("my-button");
+      console.log("old", oldButton);
+      oldButton.replaceWith(newButton);
+      return;
     }
   });
+
   app.appendChild(title);
   app.appendChild(button);
 
