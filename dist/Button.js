@@ -7,7 +7,7 @@ export default function Button({ text = "Click me!!!", onClick }) {
   button.style.color = "white";
   button.style.border = "none";
   button.style.cursor = "pointer";
-  button.style.fontSize = "16px";
+  button.style.fontSize = "20px";
 
   if (onClick) {
     button.addEventListener("click", onClick);

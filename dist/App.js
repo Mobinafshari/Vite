@@ -1,4 +1,5 @@
 import Button from "./Button.js";
+import Typography from "./Typogeraphy.js";
 
 export default function App() {
   const socket = new WebSocket("ws://localhost:5173");
@@ -7,9 +8,7 @@ export default function App() {
   app.style.textAlign = "center";
   app.style.padding = "20px";
 
-  const title = document.createElement("h1");
-  title.textContent = "My App!";
-  title.style.color = "#333";
+  const title = Typography({ text: "Hello World" });
 
   const button = Button({
     text: "Click",
@@ -21,20 +20,30 @@ export default function App() {
   socket.addEventListener("message", async (event) => {
     const data = JSON.parse(event.data);
     if (data.type === "reload") {
-      const newModule = await import(`./Button.js?t=${Date.now()}`);
-      const newButton = newModule.default
-        ? newModule.default({
-            text: "Click",
-            onClick: () => {
-              alert("Button clicked");
-            },
-          })
-        : newModule.App();
+      if (data.file.includes("Button.js")) {
+        const newModule = await import(`./Button.js?t=${Date.now()}`);
+        const newButton = newModule.default
+          ? newModule.default({
+              text: "Click",
+              onClick: () => {
+                alert("Button clicked");
+              },
+            })
+          : newModule.App();
 
-      const oldButton = document.getElementById("my-button");
-      console.log("old", oldButton);
-      oldButton.replaceWith(newButton);
-      return;
+        const oldButton = document.getElementById("my-button");
+        oldButton.replaceWith(newButton);
+        newButton.id = "my-button";
+      }
+      if (data.file.includes("Typogeraphy.js")) {
+        const newModule = await import(`./Typogeraphy.js?t=${Date.now()}`);
+        const newTitle = newModule.default
+          ? newModule.default({ text: "Hello World" })
+          : newModule.App();
+
+        const oldTitle = document.querySelector("h1");
+        oldTitle.replaceWith(newTitle);
+      }
     }
   });
 
