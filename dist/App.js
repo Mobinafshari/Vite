@@ -7,7 +7,7 @@ export default function App() {
   app.style.textAlign = "center";
   app.style.padding = "20px";
   
-  const title = Typography({ text: "Hello World" });
+  const title = Typography({ text: "Hello World!!" });
   
   const button = Button({
     text: "Click",
