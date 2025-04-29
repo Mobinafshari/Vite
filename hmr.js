@@ -65,7 +65,7 @@ watcher.on("change", (filePath) => {
   const mustChanges = [...moduleGraph.entries()].find((entry) =>
     entry[0].includes(filePath)
   );
-  console.log(mustChanges);
+  console.log('===>>>',filePath);
 
   // Notify all connected clients
   wss.clients.forEach((client) => {
