@@ -1,14 +1,19 @@
 import Button from "./Button.js";
 import Typography from "./Typogeraphy.js";
+import { createHMRRuntime } from "./hmrRuntime.js";
 
 export default function App() {
-  
+  const hmrRuntime = createHMRRuntime();
+  hmrRuntime.on("./Button.js", async () => {
+    const newButton = await import("./Button.js?t=" + Date.now());
+    rerender(newButton.default());
+  });
   const app = document.createElement("div");
   app.style.textAlign = "center";
   app.style.padding = "20px";
-  
+
   const title = Typography({ text: "Hello World!!" });
-  
+
   const button = Button({
     text: "Click",
     onClick: () => {

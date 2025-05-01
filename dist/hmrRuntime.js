@@ -1,6 +1,6 @@
 export function createHMRRuntime() {
   const subscribers = new Map();
-
+  console.log("subscribers", subscribers);
   return {
     on(filePath, callback) {
       if (!subscribers.has(filePath)) {

@@ -1,4 +1,4 @@
-import { createHMRRuntime } from "../hmr-runtime.js";
+import { createHMRRuntime } from "./hmrRuntime.js";
 import App from "./App.js";
 
 const root = document.getElementById("root");
