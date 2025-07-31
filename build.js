@@ -7,12 +7,14 @@ esbuild
     outfile: "dist/bundle.js",
     format: "esm",
     sourcemap: true,
+    jsx: "automatic",
     loader: {
       ".js": "jsx",
       ".jsx": "jsx",
+      ".css": "css",
     },
   })
-  .then(() => {
-    console.log("Build complete");
+  .then((data) => {
+    console.log("Preparing Project to start..." , data);
   })
   .catch(() => process.exit(1));

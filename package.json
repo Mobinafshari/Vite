@@ -4,7 +4,9 @@
   "description": "Tiny Vite",
   "main": "hmr.js",
   "type": "module",
-  "scripts": {},
+  "scripts": {
+    "dev" : "node build.js && node server.ts"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
