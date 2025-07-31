@@ -19595,6 +19595,15 @@ function App() {
 
 // src/main.jsx
 var import_jsx_runtime2 = __toESM(require_jsx_runtime(), 1);
+var ws = new WebSocket("ws://localhost:5173");
+ws.addEventListener("open", () => {
+  console.log("\u2705 Connected to HMR WebSocket server");
+  ws.send("Hello from client!");
+});
+ws.addEventListener("message", (event) => {
+  const data = JSON.parse(event.data);
+  console.log("\u{1F4E9} Message from server:", data);
+});
 var root = import_client.default.createRoot(document.getElementById("root"));
 root.render(/* @__PURE__ */ (0, import_jsx_runtime2.jsx)(App, {}));
 /*! Bundled license information:

@@ -14,7 +14,7 @@ esbuild
       ".css": "css",
     },
   })
-  .then((data) => {
-    console.log("Preparing Project to start..." , data);
+  .then(() => {
+    console.log("Preparing Project to start...");
   })
   .catch(() => process.exit(1));
