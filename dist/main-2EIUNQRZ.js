@@ -19594,21 +19594,31 @@ function Typogeraphy({ Component = "p", children, style, ...rest }) {
 }
 var Typogeraphy_default = Typogeraphy;
 
-// src/page/Main.tsx
+// src/page/Child.tsx
 var import_jsx_runtime2 = __toESM(require_jsx_runtime(), 1);
+function Child() {
+  return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { children: "Child" });
+}
+var Child_default = Child;
+
+// src/page/Main.tsx
+var import_jsx_runtime3 = __toESM(require_jsx_runtime(), 1);
 function Main() {
-  return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(Typogeraphy_default, { style: { color: "green" }, children: "This is the Main Page Bro!" }) });
+  return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Typogeraphy_default, { style: { color: "green" }, children: "This is the Main Page Bro!" }),
+    /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Child_default, {})
+  ] });
 }
 var Main_default = Main;
 
 // src/App.jsx
-var import_jsx_runtime3 = __toESM(require_jsx_runtime(), 1);
+var import_jsx_runtime4 = __toESM(require_jsx_runtime(), 1);
 function App() {
-  return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Main_default, {});
+  return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Main_default, {});
 }
 
 // src/main.jsx
-var import_jsx_runtime4 = __toESM(require_jsx_runtime(), 1);
+var import_jsx_runtime5 = __toESM(require_jsx_runtime(), 1);
 var ws = new WebSocket("ws://localhost:5173");
 ws.addEventListener("open", () => {
   console.log("\u2705 Connected to HMR WebSocket server");
@@ -19619,7 +19629,7 @@ ws.addEventListener("message", (event) => {
   console.log("\u{1F4E9} Message from server:", data);
 });
 var root = import_client.default.createRoot(document.getElementById("root"));
-root.render(/* @__PURE__ */ (0, import_jsx_runtime4.jsx)(App, {}));
+root.render(/* @__PURE__ */ (0, import_jsx_runtime5.jsx)(App, {}));
 /*! Bundled license information:
 
 scheduler/cjs/scheduler.development.js:
@@ -19677,4 +19687,4 @@ react/cjs/react-jsx-runtime.development.js:
    * LICENSE file in the root directory of this source tree.
    *)
 */
-//# sourceMappingURL=bundle.js.map
+//# sourceMappingURL=main-2EIUNQRZ.js.map

@@ -1,0 +1,296 @@
+{
+  "inputs": {
+    "node_modules/scheduler/cjs/scheduler.development.js": {
+      "bytes": 12144,
+      "imports": [],
+      "format": "cjs"
+    },
+    "node_modules/scheduler/index.js": {
+      "bytes": 194,
+      "imports": [
+        {
+          "path": "node_modules/scheduler/cjs/scheduler.development.js",
+          "kind": "require-call",
+          "original": "./cjs/scheduler.development.js"
+        }
+      ],
+      "format": "cjs"
+    },
+    "node_modules/react/cjs/react.development.js": {
+      "bytes": 45032,
+      "imports": [],
+      "format": "cjs"
+    },
+    "node_modules/react/index.js": {
+      "bytes": 186,
+      "imports": [
+        {
+          "path": "node_modules/react/cjs/react.development.js",
+          "kind": "require-call",
+          "original": "./cjs/react.development.js"
+        }
+      ],
+      "format": "cjs"
+    },
+    "node_modules/react-dom/cjs/react-dom.development.js": {
+      "bytes": 17673,
+      "imports": [
+        {
+          "path": "node_modules/react/index.js",
+          "kind": "require-call",
+          "original": "react"
+        }
+      ],
+      "format": "cjs"
+    },
+    "node_modules/react-dom/index.js": {
+      "bytes": 1359,
+      "imports": [
+        {
+          "path": "node_modules/react-dom/cjs/react-dom.development.js",
+          "kind": "require-call",
+          "original": "./cjs/react-dom.development.js"
+        }
+      ],
+      "format": "cjs"
+    },
+    "node_modules/react-dom/cjs/react-dom-client.development.js": {
+      "bytes": 949829,
+      "imports": [
+        {
+          "path": "node_modules/scheduler/index.js",
+          "kind": "require-call",
+          "original": "scheduler"
+        },
+        {
+          "path": "node_modules/react/index.js",
+          "kind": "require-call",
+          "original": "react"
+        },
+        {
+          "path": "node_modules/react-dom/index.js",
+          "kind": "require-call",
+          "original": "react-dom"
+        }
+      ],
+      "format": "cjs"
+    },
+    "node_modules/react-dom/client.js": {
+      "bytes": 1373,
+      "imports": [
+        {
+          "path": "node_modules/react-dom/cjs/react-dom-client.development.js",
+          "kind": "require-call",
+          "original": "./cjs/react-dom-client.development.js"
+        }
+      ],
+      "format": "cjs"
+    },
+    "node_modules/react/cjs/react-jsx-runtime.development.js": {
+      "bytes": 12237,
+      "imports": [
+        {
+          "path": "node_modules/react/index.js",
+          "kind": "require-call",
+          "original": "react"
+        }
+      ],
+      "format": "cjs"
+    },
+    "node_modules/react/jsx-runtime.js": {
+      "bytes": 210,
+      "imports": [
+        {
+          "path": "node_modules/react/cjs/react-jsx-runtime.development.js",
+          "kind": "require-call",
+          "original": "./cjs/react-jsx-runtime.development.js"
+        }
+      ],
+      "format": "cjs"
+    },
+    "src/components/Typogeraphy.tsx": {
+      "bytes": 350,
+      "imports": [
+        {
+          "path": "react",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "node_modules/react/jsx-runtime.js",
+          "kind": "import-statement",
+          "original": "react/jsx-runtime"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/page/Child.tsx": {
+      "bytes": 105,
+      "imports": [
+        {
+          "path": "react",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "node_modules/react/jsx-runtime.js",
+          "kind": "import-statement",
+          "original": "react/jsx-runtime"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/page/Main.tsx": {
+      "bytes": 308,
+      "imports": [
+        {
+          "path": "react",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "src/components/Typogeraphy.tsx",
+          "kind": "import-statement",
+          "original": "../components/Typogeraphy"
+        },
+        {
+          "path": "src/page/Child.tsx",
+          "kind": "import-statement",
+          "original": "./Child"
+        },
+        {
+          "path": "node_modules/react/jsx-runtime.js",
+          "kind": "import-statement",
+          "original": "react/jsx-runtime"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/App.jsx": {
+      "bytes": 85,
+      "imports": [
+        {
+          "path": "src/page/Main.tsx",
+          "kind": "import-statement",
+          "original": "./page/Main"
+        },
+        {
+          "path": "node_modules/react/jsx-runtime.js",
+          "kind": "import-statement",
+          "original": "react/jsx-runtime"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/styles/index.css": {
+      "bytes": 94,
+      "imports": []
+    },
+    "src/main.jsx": {
+      "bytes": 503,
+      "imports": [
+        {
+          "path": "node_modules/react-dom/client.js",
+          "kind": "import-statement",
+          "original": "react-dom/client"
+        },
+        {
+          "path": "src/App.jsx",
+          "kind": "import-statement",
+          "original": "./App"
+        },
+        {
+          "path": "src/styles/index.css",
+          "kind": "import-statement",
+          "original": "./styles/index.css"
+        },
+        {
+          "path": "node_modules/react/jsx-runtime.js",
+          "kind": "import-statement",
+          "original": "react/jsx-runtime"
+        }
+      ],
+      "format": "esm"
+    }
+  },
+  "outputs": {
+    "dist/main-2EIUNQRZ.js.map": {
+      "imports": [],
+      "exports": [],
+      "inputs": {},
+      "bytes": 1510471
+    },
+    "dist/main-2EIUNQRZ.js": {
+      "imports": [],
+      "exports": [],
+      "entryPoint": "src/main.jsx",
+      "cssBundle": "dist/main-UEEEPACC.css",
+      "inputs": {
+        "node_modules/scheduler/cjs/scheduler.development.js": {
+          "bytesInOutput": 11386
+        },
+        "node_modules/scheduler/index.js": {
+          "bytesInOutput": 239
+        },
+        "node_modules/react/cjs/react.development.js": {
+          "bytesInOutput": 42857
+        },
+        "node_modules/react/index.js": {
+          "bytesInOutput": 227
+        },
+        "node_modules/react-dom/cjs/react-dom.development.js": {
+          "bytesInOutput": 15616
+        },
+        "node_modules/react-dom/index.js": {
+          "bytesInOutput": 257
+        },
+        "node_modules/react-dom/cjs/react-dom-client.development.js": {
+          "bytesInOutput": 889011
+        },
+        "node_modules/react-dom/client.js": {
+          "bytesInOutput": 262
+        },
+        "node_modules/react/cjs/react-jsx-runtime.development.js": {
+          "bytesInOutput": 11758
+        },
+        "node_modules/react/jsx-runtime.js": {
+          "bytesInOutput": 251
+        },
+        "src/main.jsx": {
+          "bytesInOutput": 578
+        },
+        "src/components/Typogeraphy.tsx": {
+          "bytesInOutput": 266
+        },
+        "src/page/Child.tsx": {
+          "bytesInOutput": 194
+        },
+        "src/page/Main.tsx": {
+          "bytesInOutput": 400
+        },
+        "src/App.jsx": {
+          "bytesInOutput": 153
+        },
+        "src/styles/index.css": {
+          "bytesInOutput": 0
+        }
+      },
+      "bytes": 976954
+    },
+    "dist/main-UEEEPACC.css.map": {
+      "imports": [],
+      "exports": [],
+      "inputs": {},
+      "bytes": 287
+    },
+    "dist/main-UEEEPACC.css": {
+      "imports": [],
+      "inputs": {
+        "src/styles/index.css": {
+          "bytesInOutput": 92
+        }
+      },
+      "bytes": 165
+    }
+  }
+}
