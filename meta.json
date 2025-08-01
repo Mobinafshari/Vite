@@ -167,11 +167,16 @@
       "format": "esm"
     },
     "src/App.jsx": {
-      "bytes": 85,
+      "bytes": 132,
       "imports": [
         {
-          "path": "src/page/Main.tsx",
+          "path": "node_modules/react/index.js",
           "kind": "import-statement",
+          "original": "react"
+        },
+        {
+          "path": "src/page/Main.tsx",
+          "kind": "dynamic-import",
           "original": "./page/Main"
         },
         {
@@ -183,7 +188,7 @@
       "format": "esm"
     },
     "src/styles/index.css": {
-      "bytes": 94,
+      "bytes": 81,
       "imports": []
     },
     "src/main.jsx": {
@@ -214,29 +219,32 @@
     }
   },
   "outputs": {
-    "dist/main-2EIUNQRZ.js.map": {
+    "dist/main-OJWEDMYP.js.map": {
       "imports": [],
       "exports": [],
       "inputs": {},
-      "bytes": 1510471
+      "bytes": 1422612
     },
-    "dist/main-2EIUNQRZ.js": {
-      "imports": [],
+    "dist/main-OJWEDMYP.js": {
+      "imports": [
+        {
+          "path": "dist/chunks/chunk-IQDSRMQA.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "dist/chunks/Main-SMC36J62.js",
+          "kind": "dynamic-import"
+        }
+      ],
       "exports": [],
       "entryPoint": "src/main.jsx",
-      "cssBundle": "dist/main-UEEEPACC.css",
+      "cssBundle": "dist/main-4COAUJE5.css",
       "inputs": {
         "node_modules/scheduler/cjs/scheduler.development.js": {
           "bytesInOutput": 11386
         },
         "node_modules/scheduler/index.js": {
           "bytesInOutput": 239
-        },
-        "node_modules/react/cjs/react.development.js": {
-          "bytesInOutput": 42857
-        },
-        "node_modules/react/index.js": {
-          "bytesInOutput": 227
         },
         "node_modules/react-dom/cjs/react-dom.development.js": {
           "bytesInOutput": 15616
@@ -245,20 +253,41 @@
           "bytesInOutput": 257
         },
         "node_modules/react-dom/cjs/react-dom-client.development.js": {
-          "bytesInOutput": 889011
+          "bytesInOutput": 889014
         },
         "node_modules/react-dom/client.js": {
           "bytesInOutput": 262
         },
-        "node_modules/react/cjs/react-jsx-runtime.development.js": {
-          "bytesInOutput": 11758
-        },
-        "node_modules/react/jsx-runtime.js": {
-          "bytesInOutput": 251
-        },
         "src/main.jsx": {
           "bytesInOutput": 578
         },
+        "src/App.jsx": {
+          "bytesInOutput": 269
+        },
+        "src/styles/index.css": {
+          "bytesInOutput": 0
+        }
+      },
+      "bytes": 919054
+    },
+    "dist/chunks/Main-SMC36J62.js.map": {
+      "imports": [],
+      "exports": [],
+      "inputs": {},
+      "bytes": 1425
+    },
+    "dist/chunks/Main-SMC36J62.js": {
+      "imports": [
+        {
+          "path": "dist/chunks/chunk-IQDSRMQA.js",
+          "kind": "import-statement"
+        }
+      ],
+      "exports": [
+        "default"
+      ],
+      "entryPoint": "src/page/Main.tsx",
+      "inputs": {
         "src/components/Typogeraphy.tsx": {
           "bytesInOutput": 266
         },
@@ -267,30 +296,54 @@
         },
         "src/page/Main.tsx": {
           "bytesInOutput": 400
-        },
-        "src/App.jsx": {
-          "bytesInOutput": 153
-        },
-        "src/styles/index.css": {
-          "bytesInOutput": 0
         }
       },
-      "bytes": 976954
+      "bytes": 1092
     },
-    "dist/main-UEEEPACC.css.map": {
+    "dist/chunks/chunk-IQDSRMQA.js.map": {
       "imports": [],
       "exports": [],
       "inputs": {},
-      "bytes": 287
+      "bytes": 86723
     },
-    "dist/main-UEEEPACC.css": {
+    "dist/chunks/chunk-IQDSRMQA.js": {
+      "imports": [],
+      "exports": [
+        "__commonJS",
+        "__toESM",
+        "require_jsx_runtime",
+        "require_react"
+      ],
+      "inputs": {
+        "node_modules/react/cjs/react.development.js": {
+          "bytesInOutput": 42857
+        },
+        "node_modules/react/index.js": {
+          "bytesInOutput": 227
+        },
+        "node_modules/react/cjs/react-jsx-runtime.development.js": {
+          "bytesInOutput": 11758
+        },
+        "node_modules/react/jsx-runtime.js": {
+          "bytesInOutput": 251
+        }
+      },
+      "bytes": 57345
+    },
+    "dist/main-4COAUJE5.css.map": {
+      "imports": [],
+      "exports": [],
+      "inputs": {},
+      "bytes": 249
+    },
+    "dist/main-4COAUJE5.css": {
       "imports": [],
       "inputs": {
         "src/styles/index.css": {
-          "bytesInOutput": 92
+          "bytesInOutput": 79
         }
       },
-      "bytes": 165
+      "bytes": 152
     }
   }
 }

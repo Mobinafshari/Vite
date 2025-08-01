@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../src/styles/index.css"],
-  "sourcesContent": ["body{\n    background-color: rgb(195, 212, 212);\n    font-family: sans-serif cursive fantasy;\n}"],
-  "mappings": ";AAAA;AACI,oBAAkB,IAAI,GAAG,EAAE,GAAG,EAAE;AAChC,eAAa,WAAW,QAAQ;AACpC;",
-  "names": []
-}
